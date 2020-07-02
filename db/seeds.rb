@@ -15,7 +15,7 @@ User.destroy_all
 Order.destroy_all
 Artifact.destroy_all
 
-(1..10).each do |i|
+(1000..1050).each do |i|
     url = "https://api.harvardartmuseums.org/object?apikey=#{KEY}&page=#{i}"
     art = RestClient.get(url)
     art_array = JSON.parse(art)['records']
