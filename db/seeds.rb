@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'rest-client'
+require 'faker'
 
 Category.destroy_all
 User.destroy_all
@@ -19,7 +20,21 @@ art = RestClient.get url
 art_array = JSON.parse(art)['records']
 art_array.each do |art|
     category = Category.find_or_create_by(name: art['classification'])
-    artifact = Artifact.find_or_create_by(sold: false, title: art['title'], category_id: category.id, technique: art['technique'], dated: art['dated'], image_url: art['primaryimageurl'], provenance: art['provenance'], description: art['description'])
+    artifact = Artifact.find_or_create_by(list_price: Faker::Commerce.price(range: 10000..10000000), 
+    sold: false, title: art['title'], 
+    category_id: category.id, 
+    technique: art['technique'], 
+    dated: art['dated'], 
+    image_url: art['primaryimageurl'], 
+    provenance: art['provenance'], 
+    description: art['description'],
+    dimensions: art['dimensions'],
+    medium: art['medium'],
+    century: art['century'],
+    accession_year: art['accessionyear'],
+    accession_method: art['accessionmethod'],
+    culture: art['culture'])
+
 end
 
 
