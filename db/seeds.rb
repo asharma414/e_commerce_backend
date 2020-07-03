@@ -46,6 +46,15 @@ urls =
     art_array = JSON.parse(art)['records']
     art_array.each do |art|
         if art['primaryimageurl']
+            if art['imagecount'] > 1 
+                image_arr = []
+                art['images'].each do |image|
+                    image_arr << image['baseimageurl']
+                end
+                image_urls = image_arr.join(', ')
+            else
+                image_urls = nil
+            end
             category = Category.find_or_create_by(name: art['classification'])
             artifact = Artifact.find_or_create_by(list_price: Faker::Commerce.price(range: 10000..10000000), 
             sold: false, title: art['title'], 
@@ -61,7 +70,8 @@ urls =
             accession_year: art['accessionyear'],
             accession_method: art['accessionmethod'],
             culture: art['culture'],
-            verification: art['verificationleveldescription'])
+            verification: art['verificationleveldescription'], 
+            images: image_urls)
         end
     end
 end
