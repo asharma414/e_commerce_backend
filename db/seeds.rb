@@ -15,8 +15,33 @@ User.destroy_all
 Order.destroy_all
 Artifact.destroy_all
 
-(1000..1050).each do |i|
-    url = "https://api.harvardartmuseums.org/object?apikey=#{KEY}&page=#{i}"
+# sculpture_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=10'
+# painting_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Paintings&page=10'
+# drawing_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Drawings&page=10'
+# photograph_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Photographs&page=10'
+# jewelry_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Jewelry&page=10'
+# tablets_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Tablets&page=10'
+# coins_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Coins&page=10'
+# stainedglass_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Stained Glass&page=10'
+# archelements_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Architectural Elements&page=10'
+# mosaics_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Mosaics&page=5'
+
+# urls = (1..5).each do |i| 
+#     [`'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Paintings&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Drawings&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Photographs&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Jewelry&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Tablets&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Coins&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Stained Glass&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Architectural Elements&page=#{i}'`,
+#     `'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Mosaics&page=#{i}'`]  
+# end
+
+(1..100).each do |i|
+    url = "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=#{i}"
+# def create_art(url)
     art = RestClient.get(url)
     art_array = JSON.parse(art)['records']
     art_array.each do |art|
@@ -35,12 +60,16 @@ Artifact.destroy_all
             century: art['century'],
             accession_year: art['accessionyear'],
             accession_method: art['accessionmethod'],
-            culture: art['culture'])
+            culture: art['culture'],
+            verification: art['verificationleveldescription'])
         end
     end
 end
 
 
+# urls.each do |url|
+#     create_art(url)
+# end
 
 
 # c1 = Category.create(name: 'Greek')
