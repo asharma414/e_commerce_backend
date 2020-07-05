@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_194248) do
+ActiveRecord::Schema.define(version: 2020_07_05_144959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2020_07_03_194248) do
     t.integer "category_id"
     t.string "technique"
     t.string "dated"
-    t.string "image_url"
     t.string "provenance"
     t.text "description"
     t.boolean "sold"
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_194248) do
     t.string "artist_lifetime"
     t.string "verification"
     t.text "images"
+    t.string "primary_image"
   end
 
   create_table "categories", force: :cascade do |t|

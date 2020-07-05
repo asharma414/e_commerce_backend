@@ -1,7 +1,7 @@
 class ArtifactsController < ApplicationController
 
     def index
-        render json: Artifact.all.to_json(:only => [ :id, :title, :image_url, :list_price, :description, :verification, :century])
+        render json: Artifact.all.to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century])
     end
 
     def show

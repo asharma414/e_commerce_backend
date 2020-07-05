@@ -61,7 +61,7 @@ urls =
             category_id: category.id, 
             technique: art['technique'], 
             dated: art['dated'], 
-            image_url: art['primaryimageurl'], 
+            primary_image: art['primaryimageurl'], 
             provenance: art['provenance'], 
             description: art['description'],
             dimensions: art['dimensions'],
