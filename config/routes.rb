@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get '/artifacts/category', to: 'artifacts#category'
   
   resources :artifacts
   resources :orders

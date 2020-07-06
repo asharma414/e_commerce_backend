@@ -1,13 +1,13 @@
 class ArtifactsController < ApplicationController
 
     def index
-        render json: Artifact.all.to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century, :classification])
-    end
-
-    def category
         arr = []
-        params[:category].each {|k, v| arr << v}
-        render json: Artifact.where(category: [Category.where(name: arr)])
+        if params[:category]
+            params[:category].each {|k, v| arr << v}
+            render json: Artifact.where(category: [Category.where(name: arr)]).to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century, :classification], :include => :category)
+        else
+            render json: Artifact.all.to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century, :classification], :include => :category)
+        end
     end
 
     def show
