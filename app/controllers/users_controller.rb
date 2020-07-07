@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.create_or_find_by(registerParams)
+        user.update(admin: false)
         render json: user.to_json(:except => :password)
     end
 
