@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     private
 
     def loginParams
-        params.permit(:username, :password)
+        params.require(:user).permit(:username, :password)
     end
 
     def registerParams
