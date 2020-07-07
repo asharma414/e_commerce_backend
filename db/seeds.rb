@@ -39,6 +39,20 @@ urls =
     "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Mosaics&page="]  
 
 
+# TIERS = {
+#     "Architectural Elements" => Faker::Commerce.price(range: 10000..10000000),
+#     "Drawings" => Faker::Commerce.price(range: 10000..5000000),
+#     "Sculpture" => Faker::Commerce.price(range: 10000..10000000),
+#     "Paintings" => Faker::Commerce.price(range: 5000000..10000000),
+#     "Jewelry" => Faker::Commerce.price(range: 10000..1000000),
+#     "Photographs" => Faker::Commerce.price(range: 10000..10000000),
+#     "Tablets" => Faker::Commerce.price(range: 100000..7000000),
+#     "Coins" => Faker::Commerce.price(range: 10000..3000000),
+#     "Stained Glass" => Faker::Commerce.price(range: 10000..5000000),
+#     "Mosaics" => Faker::Commerce.price(range: 10000..5000000)
+# }
+
+
 # (1..100).each do |i|
 #     url = "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=#{i}"
  def create_art(url)
@@ -78,7 +92,7 @@ end
 
 
 urls.each do |url|
-    (1..2).each do |i| 
+    (1..3).each do |i| 
         api_url = url+i.to_s
         create_art(api_url)
     end
