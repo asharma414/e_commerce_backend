@@ -92,7 +92,7 @@ end
 
 
 urls.each do |url|
-    (1..3).each do |i| 
+    (1..2).each do |i| 
         api_url = url+i.to_s
         create_art(api_url)
     end
