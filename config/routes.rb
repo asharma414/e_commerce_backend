@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post '/login', to: 'users#login' 
+  get '/cart', to: 'orders#cart'
   resources :artifacts
   resources :orders
   resources :users

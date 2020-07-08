@@ -4,10 +4,14 @@ class OrdersController < ApplicationController
     end
 
     def create
-        Order.create_or_find_by(orderParams)
+        order = Order.create_or_find_by(orderParams)
         list_price = Artifact.find(orderParams[:artifact_id])[:list_price]
-        order = Order.update(total_price: list_price, status: true)
+        order.update(total_price: list_price, status: true)
         render json: order
+    end
+
+    def cart 
+        render json: Order.where(user_id: params[:user_id], status: true) 
     end
 
     def update
