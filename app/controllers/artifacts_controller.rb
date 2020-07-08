@@ -11,11 +11,11 @@ class ArtifactsController < ApplicationController
     # end
 
     def index
-        render json: Artifact.all.to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century], :include => { :category => {:only => [:name, :id] }})
+        render json: Artifact.where(sold: false).to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century], :include => { :category => {:only => [:name, :id] }})
     end
 
     def show
-        render json: Artifact.find(params[:id]).to_json(:except => [ :created_at, :updated_at ], :include => { :category => {:only => [:name, :id] }})
+        render json: Artifact.find(params[:id]).to_json(:except => [ :created_at, :updated_at ], :include => [:category, :orders])
     end
 
 

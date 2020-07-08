@@ -11,10 +11,25 @@ class OrdersController < ApplicationController
     end
 
     def cart 
-        render json: Order.where(user_id: params[:user_id], status: true) 
+        render json: Order.where(user_id: params[:user_id], status: true).to_json(:include => :artifact) 
     end
 
-    def update
+    def checkout
+        total = 0
+        params[:orders].each do |order|
+            ord = Order.find(order['id'])
+            art = Artifact.find(order['artifact_id'])
+            ord.status = false
+            art.sold = true
+            art.save
+            ord.save
+            total += ord['total_price']
+        end
+        render json: {total: total}
+    end
+
+    def destroy
+        render json: Order.destroy(params[:id])
     end
 
     private
