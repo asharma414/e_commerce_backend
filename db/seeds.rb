@@ -27,9 +27,9 @@ Artifact.destroy_all
 # mosaics_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Mosaics&page=5'
 
 urls = 
-    ["https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Architectural%20Elements&page=",
+    ["https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=",
+    "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Architectural%20Elements&page=",
     "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Drawings&page=",
-    "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=",
     "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Paintings&page=",
     "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Jewelry&page=",
     "https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Photographs&page=",
@@ -92,7 +92,7 @@ end
 
 
 urls.each do |url|
-    (1..2).each do |i| 
+    (1..3).each do |i| 
         api_url = url+i.to_s
         create_art(api_url)
     end
