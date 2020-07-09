@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
             ord.save
             total += ord['total_price']
         end
-        render json: {total: total}
+        render json: {total: total, orders: params[:orders]}
     end
 
     def destroy
