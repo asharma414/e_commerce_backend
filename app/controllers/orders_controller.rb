@@ -20,6 +20,11 @@ class OrdersController < ApplicationController
             ord = Order.find(order['id'])
             art = Artifact.find(order['artifact_id'])
             ord.status = false
+            art.orders.each do |o|
+                if o['id'] != order['id']
+                    Order.destroy(o['id'])
+                end 
+            end
             art.sold = true
             art.save
             ord.save
