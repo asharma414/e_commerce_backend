@@ -84,6 +84,7 @@ urls =
             accession_year: art['accessionyear'],
             accession_method: art['accessionmethod'],
             culture: art['culture'],
+            verification_number: art['verificationlevel'],
             verification: art['verificationleveldescription'], 
             images: image_urls)
         end

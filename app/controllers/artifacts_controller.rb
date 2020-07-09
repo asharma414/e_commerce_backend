@@ -11,7 +11,7 @@ class ArtifactsController < ApplicationController
     # end
 
     def index
-        render json: Artifact.where(sold: false).to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :century], :include => { :category => {:only => [:name, :id] }})
+        render json: Artifact.where(sold: false).to_json(:only => [ :id, :title, :primary_image, :list_price, :description, :verification, :verification_number, :century], :include => { :category => {:only => [:name, :id] }})
     end
 
     def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_144959) do
+ActiveRecord::Schema.define(version: 2020_07_09_134611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_144959) do
     t.string "verification"
     t.text "images"
     t.string "primary_image"
+    t.integer "verification_number"
   end
 
   create_table "categories", force: :cascade do |t|
