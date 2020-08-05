@@ -1,8 +1,5 @@
 class OrdersController < ApplicationController
 
-    def index
-    end
-
     def create
         order = Order.create_or_find_by(orderParams)
         list_price = Artifact.find(orderParams[:artifact_id])[:list_price]

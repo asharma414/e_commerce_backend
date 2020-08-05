@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post '/checkout', to: 'orders#checkout'
   post '/login', to: 'users#login' 
   get '/cart', to: 'orders#cart'
+  get '/stats', to: 'stats#index'
   resources :artifacts
   resources :orders
   resources :users
