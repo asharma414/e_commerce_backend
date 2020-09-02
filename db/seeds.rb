@@ -8,7 +8,6 @@
 
 require 'rest-client'
 require 'faker'
-# require_relative '../config/key'
 
 Category.destroy_all
 User.destroy_all
@@ -16,6 +15,7 @@ Order.destroy_all
 Artifact.destroy_all
 
 KEY = ENV['API_KEY']
+
 
 # sculpture_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Sculpture&page=10'
 # painting_url = 'https://api.harvardartmuseums.org/object?apikey=#{KEY}&classification=Paintings&page=10'
