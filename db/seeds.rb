@@ -109,6 +109,7 @@ end
 # art3 = Artifact.create(title: 'Glass', category_id: c1.id)
 u1 = User.create(first_name: "Abhinav", last_name: 'Sharma', username: 'as', address: '123 Lane', admin: false, password: '123')
 u2 = User.create(first_name: "Saima", last_name: 'Akhtar', username: 'sa', address: '456 Lane', admin: true, password: '123')
+u3 = User.create(first_name: "Guest", last_name: 'Guest', username: 'guest', address: '456 Lane', admin: false, password: '123')
 # o1 = Order.create(user_id: u1.id, artifact_id: art1.id)
 # o2 = Order.create(user_id: u2.id, artifact_id: art2.id)
 # o3 = Order.create(user_id: u1.id, artifact_id: art3.id)
