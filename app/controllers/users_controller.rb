@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
 
     def show
+        user = User.find(params[:id])
+        if user
+            render json: user.purchase_history
+        end
     end
 
     def update
