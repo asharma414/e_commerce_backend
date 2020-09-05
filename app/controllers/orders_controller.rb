@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
         order = Order.create_or_find_by(orderParams)
         list_price = Artifact.find(orderParams[:artifact_id])[:list_price]
         order.update(total_price: list_price, status: true)
-        render json: order
+        render json: order.to_json(:include => :artifact) 
     end
 
     def cart 
